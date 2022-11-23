@@ -8,7 +8,7 @@ const calculator = {
 
 // Update Display
 const updateDisplay = () => {
-    const display = document.querySelector(".screen")
+    const display = document.querySelector(".screen");
     display.value = calculator.displayValue;
 }
 
@@ -72,19 +72,19 @@ const inputDecimal = (dot) => {
 // Handle Operators
 const handleOperator = (nextOperator) => {
     const { firstOperand, displayValue, operator} = calculator;
-    const inputValue = parseFloat(displayValue)
+    const inputValue = parseFloat(displayValue);
 
     if(operator && calculator.waitingForSecondOperand) {
         calculator.operator = nextOperator;
-        return
+        return;
     }
 
     if(firstOperand === null && !isNaN(inputValue)) {
-        calculator.firstOperand = inputValue
+        calculator.firstOperand = inputValue;
     } else if(operator) {
-        const result = calculate(firstOperand, inputValue, operator)
+        const result = calculate(firstOperand, inputValue, operator);
 
-        calculator.displayValue = `${parseFloat(result.toFixed(7))}`
+        calculator.displayValue = `${parseFloat(result.toFixed(7))}`;
         calculator.firstOperand = result;
     }
 
@@ -105,3 +105,11 @@ const calculate = (firstOperand, secondOperand, operator) => {
     }
     return secondOperand;
 }
+
+// Reset Calculator
+const resetCalculator = () => {
+    calculator.displayValue = '0';
+    calculator.firstOperand = null;
+    calculator.waitingForSecondOperand = false;
+    calculator.operator = null;
+};
