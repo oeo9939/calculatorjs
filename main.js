@@ -92,3 +92,16 @@ const handleOperator = (nextOperator) => {
     calculator.operator = nextOperator;
 };
 
+// Calculator logic
+const calculate = (firstOperand, secondOperand, operator) => {
+    if(operator === '+') {
+        return firstOperand + secondOperand;
+    } else if(operator === '-') {
+        return firstOperand - secondOperand;
+    } else if(operator === '*') {
+        return firstOperand * secondOperand;
+    } else if(operator === '/') {
+        return firstOperand / secondOperand;
+    }
+    return secondOperand;
+}
